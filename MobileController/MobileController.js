@@ -284,7 +284,6 @@ var MobileController = function() {
 
 		return new Ext.Panel({
 			style : 'background: grey;',
-			renderTo : rtid,
 			layout : {
 				type : 'vbox',
 				pack : 'center',
@@ -323,22 +322,17 @@ var MobileController = function() {
 			// see http://cruisedemos.dyndns.org/tsr-api class Ext.cruise.client.Utility for the API
 			xmlUtils = context.getAttribute("XMLUtilities");
 
-			// create view panel of this component
-			panel = createPanel(renderTargetId);
-			
-
-			// add panel into rendertarget area
-			//this.renderTarget.add(panel);
-
-			//TODO: auto-generated method stub
-
-			/* To fire an event use the following scheme.
-			 var msg = new Ext.cruise.client.Message();
-			 msg.setName('eventNameAsDeclaredInMCDL');
-			 msg.appendToBody('parameter1AsDeclaredInMCDL', '<test/>');
-			 msg.appendToBody('parameter2AsDeclaredInMCDL', '<test2>Hello World!</test2>');
-			 proxy.publish(msg);
-			 */
+			Ext.setup({
+				viewport : {
+					renderTo : rtid
+				},
+				
+				onReady : function(){
+					// create view panel of this component
+					panel = createPanel(renderTargetId);
+					Ext.Viewport.add(panel);
+				}
+			});
 		},
 
 		dispose : function() {
