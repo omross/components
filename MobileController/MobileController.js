@@ -197,7 +197,7 @@ var MobileController = function() {
 	/**
 	 * Helper method to create the main view panel.
 	 */
-	var createPanel = function() {
+	var createPanel = function(rtid) {
 
 		// 1st create direction elements
 		var cross = createDirectionCross();
@@ -284,6 +284,7 @@ var MobileController = function() {
 
 		return new Ext.Panel({
 			style : 'background: grey;',
+			renderTo : rtid,
 			layout : {
 				type : 'vbox',
 				pack : 'center',
@@ -313,8 +314,8 @@ var MobileController = function() {
 		init : function(ctx) {
 			context = ctx;
 			log = context.getAttribute("Logger");
-			//renderTargetId = context.getAttribute("renderTargetId");
-			this.renderTarget = context.getAttribute("renderTarget");
+			renderTargetId = context.getAttribute("renderTargetId");
+			//this.renderTarget = context.getAttribute("renderTarget");
 			broker = context.getAttribute("EventHandler");
 			serviceAccess = context.getAttribute("ServiceAccess");
 
@@ -323,10 +324,11 @@ var MobileController = function() {
 			xmlUtils = context.getAttribute("XMLUtilities");
 
 			// create view panel of this component
-			panel = createPanel();
+			panel = createPanel(renderTargetId);
+			
 
 			// add panel into rendertarget area
-			this.renderTarget.add(panel);
+			//this.renderTarget.add(panel);
 
 			//TODO: auto-generated method stub
 
