@@ -314,7 +314,6 @@ var MobileController = function() {
 			context = ctx;
 			log = context.getAttribute("Logger");
 			renderTargetId = context.getAttribute("renderTargetId");
-			//this.renderTarget = context.getAttribute("renderTarget");
 			broker = context.getAttribute("EventHandler");
 			serviceAccess = context.getAttribute("ServiceAccess");
 
@@ -324,7 +323,7 @@ var MobileController = function() {
 
 			Ext.setup({
 				viewport : {
-					renderTo : rtid
+					renderTo : renderTargetId
 				},
 				
 				onReady : function(){
