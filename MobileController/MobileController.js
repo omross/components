@@ -284,6 +284,7 @@ var MobileController = function() {
 
 		return new Ext.Panel({
 			style : 'background: grey;',
+			fullscreen : true,
 			layout : {
 				type : 'vbox',
 				pack : 'center',
@@ -325,12 +326,13 @@ var MobileController = function() {
 				viewport : {
 					renderTo : renderTargetId
 				},
-				
-				onReady : function(){
+
+				onReady : function() {
 					// create view panel of this component
 					panel = createPanel(renderTargetId);
 					Ext.Viewport.add(panel);
 				}
+
 			});
 		},
 
@@ -362,15 +364,10 @@ var MobileController = function() {
 		invokeOperation : function(operationName, message) {
 			var params = message.getBody();
 
-			if(operationName === 'showLoadingState' && 
-				message.getBody()['loadingState'] != undefined && 
-				message.getBody()['loadingState'] != null) {
+			if (operationName === 'showLoadingState' && message.getBody()['loadingState'] != undefined && message.getBody()['loadingState'] != null) {
 				// calling operation
 				this.showLoadingState(params['loadingState']);
-			} 
-			else if(operationName === showLoadResult && 
-				params['loadResult'] != undefined &&
-				params['loadResult'] != null){
+			} else if (operationName === showLoadResult && params['loadResult'] != undefined && params['loadResult'] != null) {
 				// calling operation
 				this.showLoadResult(params['loadResult']);
 			} else {
@@ -385,16 +382,17 @@ var MobileController = function() {
 		getProperty : function(name) {
 
 		},
-		
+
 		/**
-		* Method shows loading progress in the context of the receiver component.
-		*/
-		showLoadingState : function(loadingState){
+		 * Method shows loading progress in the context of the receiver component.
+		 */
+		showLoadingState : function(loadingState) {
 
 		},
-		
-		showLoadResult : function(loadResult){
+
+		showLoadResult : function(loadResult) {
 
 		}
+
 	}
 };
